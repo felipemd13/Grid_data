@@ -20,8 +20,8 @@ def main():
         for i in range(31):
             dates_to_scrape.append(first_date + timedelta(days=i))
 
-    # with ThreadPoolExecutor(max_workers=10) as executor:
-    #     executor.map(lambda date_to_scrape: get_pdf(date_to_scrape.day, date_to_scrape.month, date_to_scrape.year), dates_to_scrape)
+    with ThreadPoolExecutor(max_workers=10) as executor:
+        executor.map(lambda date_to_scrape: get_pdf(date_to_scrape.day, date_to_scrape.month, date_to_scrape.year), dates_to_scrape)
     print('End scraping')
     print('-'*20)
     print('Begin parsing')
